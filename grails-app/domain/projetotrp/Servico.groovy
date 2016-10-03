@@ -1,7 +1,8 @@
 package projetotrp
+import Enuns.*
 
 class Servico {
-    Enum statusServico
+    StatusServico statusServico
     String valorServico
     
     static belongsTo = [contrato:Contrato]

@@ -1,6 +1,6 @@
 package projetotrp
 import Enuns.*
-class UsuarioSistema {
+class  UsuarioSistema {
     Date dataNascimento
     String nome
     String email
@@ -17,7 +17,7 @@ class UsuarioSistema {
         cpf nullable:false,  unique:true
         endereco nullable:false,  maxSize:200
         login nullable:false, maxSize:20, unique:true
-        senha nullable:false, maxSize:20
+        senha nullable:false, maxSize:20, password:true
         statusDoAcesso nullable:false, maxSize:1
             
     }
