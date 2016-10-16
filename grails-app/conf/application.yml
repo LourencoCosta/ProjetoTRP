@@ -54,6 +54,11 @@ grails:
     spring:
         transactionManagement:
             proxies: false
+            
+            
+            
+            
+            
 info:
     app:
         name: '@info.app.name@'
@@ -121,6 +126,14 @@ grails:
                 scriptlets: html
                 taglib: none
                 staticparts: none
+#    plugin:
+#            springsecurity:
+#                facebook:
+#                    domain:
+#                        classname: 'FacebookUser'
+#                    appId: 160711984387860
+#                    secret: c0886a068d73cd9ca844379efe76b1c7                
 endpoints:
     jmx:
         unique-names: true
+    
