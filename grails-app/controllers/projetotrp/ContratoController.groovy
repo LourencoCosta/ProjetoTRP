@@ -9,8 +9,12 @@ class ContratoController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Contrato.list(params), model:[contratoCount: Contrato.count()]
+        if (session.usuarioSistema){
+            params.max = Math.min(max ?: 10, 100)
+            respond Contrato.list(params), model:[contratoCount: Contrato.count()]
+        }else{
+            redirect(uri:'/logintrp')
+        }
     }
 
     def show(Contrato contrato) {

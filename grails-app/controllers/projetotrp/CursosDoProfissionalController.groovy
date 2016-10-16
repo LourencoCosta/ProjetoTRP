@@ -7,6 +7,16 @@ import grails.transaction.Transactional
 class CursosDoProfissionalController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    
+    def interceptor = [action:this.&auth]
+//    , except:["index", "list", "show"]]
+
+    def auth() {
+        if(!session.usuarioSistema) {
+            redirect(controller:"autenticar", action:"index")
+            return false
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
