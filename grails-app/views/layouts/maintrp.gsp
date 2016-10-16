@@ -25,7 +25,7 @@
                 </button>
                 <a class="navbar-brand" href="/#">
                     <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
+                        <asset:image src="logo_2_1.svg"/>
                     </i> TRP
                 </a>
             </div>
@@ -44,7 +44,9 @@
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
-
+    <div id="loginHeader">
+        <g:loginControl />
+    </div>
 <asset:javascript src="application.js"/>
 
 </body>

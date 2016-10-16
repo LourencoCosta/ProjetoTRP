@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="maintrp" />
         <g:set var="entityName" value="${message(code: 'usuarioSistema.label', default: 'UsuarioSistema')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title><g:message code="default.create.usuario.label" args="[entityName]" /></title>
     </head>
     <body>
         <a href="#create-usuarioSistema" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -11,23 +11,29 @@
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="create-usuarioSistema" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+                </ul>
+            </div>
+            <div id="create-usuarioSistema" class="content scaffold-create" role="maintrp">
+                <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${this.usuarioSistema}">
-            <ul class="errors" role="alert">
-                <g:eachError bean="${this.usuarioSistema}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
+                <ul class="errors" role="alert">
+                    <g:eachError bean="${this.usuarioSistema}" var="error">
+                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                        </g:eachError>
+                </ul>
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="usuarioSistema"/>
+                    <!--<f:all bean="usuarioSistema"/>-->      
+                    <f:field bean="usuarioSistema" property="nome"/>
+                    <f:field bean="usuarioSistema" property="email"/>
+                    <f:field bean="usuarioSistema" property="cpf"/>
+                    <f:field bean="usuarioSistema" property="login"/>
+                    <f:field bean="usuarioSistema" property="foto"/>
+                    <f:field bean="usuarioSistema" property="senha"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
