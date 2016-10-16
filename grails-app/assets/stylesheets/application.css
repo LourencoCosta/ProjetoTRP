@@ -13,3 +13,7 @@
 *= require mobile
 *= require_self
 */
+#loginHeader {
+  float: right;
+  color: #fff;
+}
