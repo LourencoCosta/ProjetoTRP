@@ -13,6 +13,9 @@ class UrlMappings {
         "/logintrp" (view:"/logintrp")
         "500"(view:'/error')
         "404"(view:'/notFound')
+        "/indexchat" (view:'/chat/index')
+        
+        
         
 //        //verificar a necessidade do uso disso aqui
 //        "/login/Experimente" {
