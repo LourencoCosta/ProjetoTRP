@@ -18,14 +18,16 @@
             <g:actionSubmit value="Login" action="index"/>
         </g:form>
     </li>
-
+    <li>
+	<div id="loginHeader">
+	    <g:loginControl />
+	</div>
+    </li>
 </content>
-<div id="loginHeader">
-    <g:loginControl />
-</div>
+
 <div class="svg" role="presentation">
     <div class="grails-logo-container">
-        <asset:image src="logo_2.gif" class="grails-logo"/>
+       <marquee behavior=slide direction=right> <asset:image src="logo_2.gif" class="grails-logo"/> </marquee>
     </div>
 </div>
 
@@ -41,10 +43,8 @@
             <ul>
                 <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                     <li class="controller">
-
-                        <g:link controller="${c.logicalPropertyName}">${c.fullName}.trim ("projetoTrp")</g:link>
-
-                    </li>
+                        <g:link controller="${c.logicalPropertyName}">${c.fullName} ("projetoTrp")</g:link>
+			</li>
                 </g:each>
             </ul>
         </div>

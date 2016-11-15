@@ -7,7 +7,7 @@ class Contrato {
     Float valorContrato
     StatusContrato statusAcesso
    
-    static belongsTo = [contratante:Contratante, profissional:Profissional]
+//    static belongsTo = [contratante:UsuarioSistema, profissional:UsuarioSistema]
     static hasOne = [pagamento:Pagamento]
     static constraints = {
         validade nullable:false

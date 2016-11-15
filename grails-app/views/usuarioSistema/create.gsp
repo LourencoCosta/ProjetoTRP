@@ -34,6 +34,8 @@
                     <f:field bean="usuarioSistema" property="login"/>
                     <f:field bean="usuarioSistema" property="foto"/>
                     <f:field bean="usuarioSistema" property="senha"/>
+		    
+		    <g:checkBox name = " myCheckbox " value = " ${false} " /> Li e Aceito com o termos de uso 
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

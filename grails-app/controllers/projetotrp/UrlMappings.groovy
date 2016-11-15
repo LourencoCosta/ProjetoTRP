@@ -14,7 +14,7 @@ class UrlMappings {
         "500"(view:'/error')
         "404"(view:'/notFound')
         "/indexchat" (view:'/chat/index')
-        
+        "/homeController/index"(view:'/index')
         
         
 //        //verificar a necessidade do uso disso aqui

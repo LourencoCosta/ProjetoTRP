@@ -28,10 +28,12 @@
                         <asset:image src="logo_2_1.svg"/>
                     </i> TRP
                 </a>
+
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
-                    <g:pageProperty name="page.nav" />
+		    <li> <g:pageProperty name="page.nav" /><li>
+			<g:loginControl />
                 </ul>
             </div>
         </div>

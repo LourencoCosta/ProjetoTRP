@@ -8,6 +8,16 @@
 </head>
 <body>
 <content tag="nav">
+    <li class="buttons">
+        <g:form controller="HomeController" action="index">
+            <g:actionSubmit value="Inicio" action="index"/>
+        </g:form>
+    </li>
+    <li class="buttons">
+        <g:form controller="usuarioSistema" action="crete">
+            <g:actionSubmit value="CADASTRAR-SE" action="create"/>
+        </g:form>
+    </li>
     <li class="dropdown">
 
 
@@ -19,6 +29,10 @@
     <li class="dropdown">
 
     </li>
+
+
+
+
 </content>
 
 <div class="svg" role="presentation">
@@ -33,10 +47,12 @@
         <div align="center">
             <g:form controller="autenticacao" action="autenticar" method="post">
                 Login:<br/>
-                <input type="text" name="login"/><br/>
+                <input class="buttons" type="text" name="login"/><br/>
                 Senha:<br/>
-                <input type="password" name="senha"/><br/>
-                <input type="submit" value="Entrar"/>
+                <input class="buttons" type="password" name="senha"/><br/>
+		<div class="breadcrumb">
+		    <input class="buttons" type="submit" value="Entrar"/>
+		</div>
             </g:form>
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>

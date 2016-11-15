@@ -1,5 +1,9 @@
 package projetotrp
 
+import groovy.json.JsonBuilder
+
+import org.springframework.messaging.handler.annotation.MessageMapping
+import org.springframework.messaging.handler.annotation.SendTo
 class ChatController {
 
     def index() { }
@@ -20,4 +24,21 @@ class ChatController {
         new Message(nickname: session.nickname, message:message).save()
         render "<script>retrieveLatestMessages()</script>"
     }
+
+    @MessageMapping("/chat")
+    @SendTo("/topic/chat")
+    protected String chat(String chatMsg) {
+        /**w
+         * Use the awesome Groovy JsonBuilder to convert a dynamically-defined
+         * data structure to JSON.
+         **/
+        def builder = new JsonBuilder()
+        builder {
+            message(chatMsg)
+            timestamp(new Date().getTime())
+        }
+        builder.toString()
+    }
+    
+    
 }

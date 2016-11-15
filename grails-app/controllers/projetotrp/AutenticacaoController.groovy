@@ -8,7 +8,7 @@ class AutenticacaoController {
         if (usuarioSistema) {
             session.usuarioSistema = usuarioSistema
             flash.message = "Hello ${usuarioSistema.nome}!"
-            redirect(uri:"http://localhost:8080/")
+            redirect(controller:"homeController", action: "index")
         } else {
             flash.message = "Acesso negado"
             redirect(uri:'/logintrp')
