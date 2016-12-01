@@ -14,11 +14,12 @@
 *= require_self
 */
 #loginHeader {
-  float: right;
-  color: #fff;
+    float: right;
+    color: #fff;
 }
+
 a{
-    
+
 }
 textarea {
     -webkit-box-sizing: border-box;
@@ -31,13 +32,13 @@ textarea {
 .buttons {
     background-color: #efefef;
     overflow: hidden;
-    padding: 0.3em;
     -moz-box-shadow: 0 0 3px 1px #aaaaaa;
     -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
     box-shadow: 0 0 3px 1px #aaaaaa;
-    margin: 0.1em 0 0 0;
+    margin: 0.7em 0 0 0;
     border: none;
-    border-radius: 40px
+    border-radius: 40px;
+    margin:5px;
 }
 
 .buttons input,
@@ -103,5 +104,117 @@ textarea {
     color: white;
     height:300px;
     text-align:center;
-     border-radius: 40px
+}
+
+#facebook {
+    font-weight: bolder;
+    background-color:#2E2EFE;
+    font-style: bold;
+    color:#FFFFFF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer {
+    background:  #7986EB;
+    color: #000;
+    clear: both;
+    font-size: 0.8em;
+    margin-top: 1.5em;
+    padding: 1em;
+    min-height: 1em;
+}
+
+.footer a {
+    color: #4D8618;
+}
+
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 3px;
+}
+
+img {
+    border: 10px;
+    border-radius: 10px;
+}
+
+img.grails-logo {
+    height:340px;
+    margin-top:-10px;
+    border-radius: 10px;
+}
+
+#spacebuttton{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#todoConteudo{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 3px;
+    background: #DCD6D6;
+    border-radius: 10px;
+    display: table; 
+    bottom:0;
+}
+#telaInteira{
+    min-height:100%;
+    position:relative;
+    width:800px;
+}
+html, body {height:100%;}
+
+
+
+.background {
+    position: absolute;
+    top:0;
+    left: 0;
+    height:100%;
+    width: 100%;
+    background-color: #000000;
+    opacity: .100; 
+    -moz-opacity:.0;
+    filter:alpha(opacity=0);
+    z-index: 0;
+    display: none;
+
+}
+
+.box{
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 600px;
+    height: 780px;
+    background-color: #FFFFFF;
+    z-index: 101;
+    padding: 14px;
+    border-radius: 4px;
+    -moz-border-radius:4px;
+    webkit-border-radius:4px;
+    box-shadow:2px 2px 2px 2px #333333;
+    -moz-box-shadow: 2px 2px 2px 2px #333333;
+    box-shadow: 2px 2px 2px 2px #333333;
+    -moz-box-shadow: 2px 2px 2px 2px #333333;
+    display: none;
+}
+.close{
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
 }

@@ -1,6 +1,5 @@
 package projetotrp
 
-import org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -18,7 +17,11 @@ class ContratoController {
     }
 
     def show(Contrato contrato) {
-        respond contrato
+//        if (session.usuarioSistema) {
+            respond contrato //.findByAllProfissionalOrContratante(session.usuarioSistema)
+//        }else{
+//            redirect(uri:'/logintrp')
+//        }
     }
 
     def create() {

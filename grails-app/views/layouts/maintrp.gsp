@@ -17,7 +17,7 @@
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -33,22 +33,20 @@
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
 		    <li> <g:pageProperty name="page.nav" /><li>
-			<g:loginControl />
                 </ul>
             </div>
         </div>
     </div>
 
     <g:layoutBody/>
-
-    <div class="footer" role="contentinfo"></div>
+<div id="telaInteira">
+    </div>
+    <div class="footer" role="contentinfo" <p align="center">COPYRIGHT 2016, CVIEIRA & RLOURENCO COMPANY.</p></div>
 
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
-    <div id="loginHeader">
-        <g:loginControl />
-    </div>
+
 <asset:javascript src="application.js"/>
 
 </body>

@@ -10,12 +10,13 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.8.2"
         classpath "org.grails.plugins:hibernate4:5.0.10"
+
     }
 }
 
 version "0.1"
-group "projetotrp"
-group "projetotrp.plummer"
+//group "projetotrp"
+//group "projetotrp.plummer"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -31,10 +32,6 @@ ext {
     gradleWrapperVersion = project.gradleWrapperVersion
 }
 
-assets {
-    minifyJs = true
-    minifyCss = true
-}
 
 repositories {
     mavenLocal()
@@ -49,6 +46,7 @@ dependencyManagement {
 }
 
 dependencies {
+    compile "org.grails.plugins:grails-spring-websocket:2.3.0"
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"

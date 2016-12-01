@@ -3,9 +3,9 @@ package projetotrp
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ContratanteController)
-@Mock(Contratante)
-class ContratanteControllerSpec extends Specification {
+@TestFor(CategoriaProfissionalController)
+@Mock(CategoriaProfissional)
+class CategoriaProfissionalControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class ContratanteControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.contratanteList
-            model.contratanteCount == 0
+            !model.categoriaProfissionalList
+            model.categoriaProfissionalCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class ContratanteControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.contratante!= null
+            model.categoriaProfissional!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class ContratanteControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def contratante = new Contratante()
-            contratante.validate()
-            controller.save(contratante)
+            def categoriaProfissional = new CategoriaProfissional()
+            categoriaProfissional.validate()
+            controller.save(categoriaProfissional)
 
         then:"The create view is rendered again with the correct model"
-            model.contratante!= null
+            model.categoriaProfissional!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            contratante = new Contratante(params)
+            categoriaProfissional = new CategoriaProfissional(params)
 
-            controller.save(contratante)
+            controller.save(categoriaProfissional)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/contratante/show/1'
+            response.redirectedUrl == '/categoriaProfissional/show/1'
             controller.flash.message != null
-            Contratante.count() == 1
+            CategoriaProfissional.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class ContratanteControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def contratante = new Contratante(params)
-            controller.show(contratante)
+            def categoriaProfissional = new CategoriaProfissional(params)
+            controller.show(categoriaProfissional)
 
         then:"A model is populated containing the domain instance"
-            model.contratante == contratante
+            model.categoriaProfissional == categoriaProfissional
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class ContratanteControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def contratante = new Contratante(params)
-            controller.edit(contratante)
+            def categoriaProfissional = new CategoriaProfissional(params)
+            controller.edit(categoriaProfissional)
 
         then:"A model is populated containing the domain instance"
-            model.contratante == contratante
+            model.categoriaProfissional == categoriaProfissional
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class ContratanteControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/contratante/index'
+            response.redirectedUrl == '/categoriaProfissional/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def contratante = new Contratante()
-            contratante.validate()
-            controller.update(contratante)
+            def categoriaProfissional = new CategoriaProfissional()
+            categoriaProfissional.validate()
+            controller.update(categoriaProfissional)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.contratante == contratante
+            model.categoriaProfissional == categoriaProfissional
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            contratante = new Contratante(params).save(flush: true)
-            controller.update(contratante)
+            categoriaProfissional = new CategoriaProfissional(params).save(flush: true)
+            controller.update(categoriaProfissional)
 
         then:"A redirect is issued to the show action"
-            contratante != null
-            response.redirectedUrl == "/contratante/show/$contratante.id"
+            categoriaProfissional != null
+            response.redirectedUrl == "/categoriaProfissional/show/$categoriaProfissional.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class ContratanteControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/contratante/index'
+            response.redirectedUrl == '/categoriaProfissional/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def contratante = new Contratante(params).save(flush: true)
+            def categoriaProfissional = new CategoriaProfissional(params).save(flush: true)
 
         then:"It exists"
-            Contratante.count() == 1
+            CategoriaProfissional.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(contratante)
+            controller.delete(categoriaProfissional)
 
         then:"The instance is deleted"
-            Contratante.count() == 0
-            response.redirectedUrl == '/contratante/index'
+            CategoriaProfissional.count() == 0
+            response.redirectedUrl == '/categoriaProfissional/index'
             flash.message != null
     }
 }

@@ -3,8 +3,17 @@ import Enuns.*
 
 class Pagamento {
     StatusPagamento statusPagamento
-    static hasOne = [contrato:Contrato]
+    Float valor
+
+    static belongsTo = [contrato:Contrato]
+    
     static constraints = {
         statusPagamento nulable:false
+	servico nullable:true
+    }
+
+
+    static mapping = {
+        id generator:'sequence-identity', params:[sequence:'pagamento_key_seq']
     }
 }

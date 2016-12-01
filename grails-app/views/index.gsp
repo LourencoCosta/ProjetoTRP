@@ -27,14 +27,14 @@
 
 <div class="svg" role="presentation">
     <div class="grails-logo-container">
-       <marquee behavior=slide direction=right> <asset:image src="logo_2.gif" class="grails-logo"/> </marquee>
+            <asset:image src="logo_2.gif" class="grails-logo"/>
     </div>
 </div>
 
 <div id="content" role="main">
     <section class="row colset-2-its">
         <h1>The Rigth Professional</h1>
-        <p>
+        <p >
             Bem Vindo Ao TRP - The Right Professional uma ferramenta que permite uma experiência mais agradável na contratação de serviços<br>
             de profissionais Liberais e Autonomos.<br>
         </p>
@@ -43,7 +43,7 @@
             <ul>
                 <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                     <li class="controller">
-                        <g:link controller="${c.logicalPropertyName}">${c.fullName} ("projetoTrp")</g:link>
+                        <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
 			</li>
                 </g:each>
             </ul>

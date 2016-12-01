@@ -16,7 +16,6 @@ class AutenticacaoController {
     }
     
     def logout (){
-        flash.message = "Goodbye ${session.usuarioSistema.nome}"
         session.usuarioSistema = null
         redirect(uri:"/")
     }

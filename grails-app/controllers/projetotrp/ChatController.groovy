@@ -1,44 +1,42 @@
 package projetotrp
 
-import groovy.json.JsonBuilder
-
-import org.springframework.messaging.handler.annotation.MessageMapping
-import org.springframework.messaging.handler.annotation.SendTo
 class ChatController {
 
-    def index() { }
+    def index() {
+        render (view: '/chat/chat')
+    }
    
-    def join(String nickname) {
-        if ( nickname.trim() == '' ) {
-            redirect(view:'/index')
-        } else {
-            session.nickname = nickname
-            render (view: '/chat/chat')
+    def escreve(){
+        if(session.usuarioSistema) {
+            flash.message = params.sendChat
+            String mensagem = params.sendChat
+            redirect(uri: '/chat')
+        }  else{
+            redirect(controller:"homeController", action: "index")
         }
-    }
-    def retrieveLatestMessages() {
-        def messages = Message.listOrderByDate(order: 'desc', max:10)
-        [messages:messages.reverse()]
-    }
-    def submitMessage(String message) {
-        new Message(nickname: session.nickname, message:message).save()
-        render "<script>retrieveLatestMessages()</script>"
-    }
 
-    @MessageMapping("/chat")
-    @SendTo("/topic/chat")
-    protected String chat(String chatMsg) {
-        /**w
-         * Use the awesome Groovy JsonBuilder to convert a dynamically-defined
-         * data structure to JSON.
-         **/
-        def builder = new JsonBuilder()
-        builder {
-            message(chatMsg)
-            timestamp(new Date().getTime())
+    }
+    def criaMensagem (){
+        if(session.usuarioSistema){
+            if (params.idUsuario != params.idProfissional){
+                try{
+                    def contratante = UsuarioSistema.get(params.idContratante)
+                    def profissional = UsuarioSistema(params.idProfissional)
+                    def mensagem = new Menssagem ([profissional:profissional, contratante:contratante, statusMensagemCliente:true, statusMensagemProfissional:true])
+                    mensagem.save flush:true
+                }catch (Exception e){
+
+                }
+            }
+        } else{
+            redirect(uri:'/logintrp')
         }
-        builder.toString()
     }
     
-    
+    def enviarMensagem(){
+//	   def mensagem = new Menssagem ();
+	   def usuarioSistema = UsuarioSistema.list()
+           render(template:"testeTemplate", model:[usuarioSistema:usuarioSistema])
+	   println "passou aqui"
+    }
 }

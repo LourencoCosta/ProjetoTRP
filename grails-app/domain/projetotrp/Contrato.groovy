@@ -2,17 +2,21 @@ package projetotrp
 import Enuns.*
 
 class Contrato {
-    Date validade
-    Date dataEmissao
-    Float valorContrato
-    StatusContrato statusAcesso
-   
-//    static belongsTo = [contratante:UsuarioSistema, profissional:UsuarioSistema]
-    static hasOne = [pagamento:Pagamento]
+	String termos
+	Date dataEmissao
+	Profissional profissional
+	UsuarioSistema contratante
+	
     static constraints = {
-        validade nullable:false
         dataEmissao nullable:false
-        valorContrato nullable:false, maxSize:11
-        statusAcesso nullable:false
+	termos nullable:false
+    }
+
+    static mappings = {
+        id generator:'sequence-identity', params:[sequence:'contrato_key_seq']
+    }
+    
+    String toString(){
+	this.dataEmissao
     }
 }

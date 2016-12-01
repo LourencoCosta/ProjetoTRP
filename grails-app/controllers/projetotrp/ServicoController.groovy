@@ -104,4 +104,15 @@ class ServicoController {
             '*'{ render status: NOT_FOUND }
         }
     }
+    
+    def avaliarServicoContratado (){
+	 
+    }
+    def submeterComentario (){
+	 
+    }
+    def mudarStatusServico(){
+	 
+    }
+
 }

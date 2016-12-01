@@ -3,19 +3,21 @@ package projetotrp
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
+        "/$controller/$action?/$id?(.$format)?" {
             constraints {
-                
+
             }
+
         }
-        
-        "/"(view:"/index")
-        "/logintrp" (view:"/logintrp")
+
+        "/"(controller: "home", action: "index")
+        "/logintrp" (controller: "home", action: "homeLogin")
         "500"(view:'/error')
         "404"(view:'/notFound')
         "/indexchat" (view:'/chat/index')
-        "/homeController/index"(view:'/index')
-        
+        "/homeController/index"(controller: "home", action: "index")
+        "/homeController"(controller: "home", action: "index")
+
         
 //        //verificar a necessidade do uso disso aqui
 //        "/login/Experimente" {
@@ -27,6 +29,8 @@ class UrlMappings {
 //            controller = "login"
 //            action = "test"
 //        }
+
+        "/teste" (view:"/teste")
         
         "/autenticacao"(view: "/logintrp")
        
