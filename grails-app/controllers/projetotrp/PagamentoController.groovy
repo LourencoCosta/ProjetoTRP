@@ -1,6 +1,6 @@
 package projetotrp
-
-import org.springframework.http.HttpStatus.*
+import groovyx.net.http.HTTPBuilder.*
+import grails.plugins.rest.client.RestBuilder.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)

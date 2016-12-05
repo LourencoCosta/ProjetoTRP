@@ -4,7 +4,7 @@
         <meta name="layout" content="maintrp"/>
         <title>TRP</title>
 
-    <asset:link rel="icon" href="logo_2.gif" type="image/x-ico" />
+    <asset:link rel="icon" href="logo_trp_final_barra.gif" type="image/x-ico" />
 </head>
 <body>
 <content tag="nav">
@@ -37,7 +37,7 @@
 
 <div class="svg" role="presentation">
     <div class="grails-logo-container">
-        <asset:image src="logo_2.gif" class="grails-logo"/>
+        <asset:image src="logo_trp_final.gif" class="grails-logo"/>
     </div>
 </div>
 

@@ -25,7 +25,7 @@
                 </button>
                 <a class="navbar-brand" href="/#">
                     <i class="fa grails-icon">
-                        <asset:image src="logo_2_1.svg"/>
+                        <asset:image src="logo_trp_final_barra.gif"/>
                     </i> TRP
                 </a>
 

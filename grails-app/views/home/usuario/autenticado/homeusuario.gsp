@@ -3,7 +3,7 @@
     <head>
         <meta name="layout" content="maintrp"/>
         <title>TRP</title>
-    <asset:link rel="icon" href="logo_2_1.svg" type="image/x-ico" />
+    <asset:link rel="icon" href="logo_trp_final_barra.gif" type="image/x-ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script defer type="text/javascript">
@@ -63,8 +63,8 @@
 	}
 	});
 	}
-	
-		function listarCategorias(){
+
+	function listarCategorias(){
 	$.ajax({
 	method: "POST",
         url: '${g.createLink( controller:'home', action:'listagemCategorias')}',
@@ -74,19 +74,58 @@
 	}
 	});
 	}
+
+	function trazerDetalhesProfissional(id){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'detalheprofissional')}',
+	data: {"id":id},
+	success: function (data){
+	console.log(data);
+	$("#detalheProfissional"+id).html(data);
+	}
+	});
+	}
+
+	function ocultarDetalhesProfissional(id){
+	$("#detalheProfissional"+id).html("");
+	}
+
+	function listarMenssagens(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'listarMenssagens')}',
+	data: {},
+	success: function (data){
+	console.log(data);
+	$("#todoConteudo").html(data);
+
+	}
+	});
+	}
+
+	function criarContrato(id){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'criarContrato')}',
+	data: {"id":id},
+	success: function (data){
+	console.log(data);
+	$("#detalheProfissional"+id).html(data);
+	}
+	});
+	}
     </script>
 </head>
 <body>
 
 <content tag="nav">
     <li class="buttons">
-	<input type="submit" name="contratoslistador" value="Contratos" onclick="listarContratos()"/>
-    </li>
 
+	<input type="submit" name="contratoslistador" value="Contratos" onclick="listarContratos()" />
+    </li>
     <li class="buttons">
-        <g:form controller="autenticacao" action="index">
-            <g:actionSubmit value="Mensagens" action="index"/>
-        </g:form>
+	<input type="submit" name="menssagemlistador" value="Menssagens" onclick="listarMenssagens()"/>
     </li>
 
     <li class="buttons">
@@ -123,7 +162,9 @@
 
 
 		<ul>
-		    <div id="todoConteudo">O Conteudo Da acao dos botoes</div>
+		    <hr>
+		    <div id="todoConteudo" ><h1 align="center"><b>The Rigth Professional - O seu problema em boas mãos <br></b></h1></div>
+		    <hr>
 		</ul>
 		<input type="submit" name="prof" value="Profissionais" onclick="listarProfissionais()"/>
 		<input type="submit" name="catego" value="Categorias" onclick="listarCategorias()"/>
@@ -141,3 +182,5 @@
         <g:loginControl />
     </div>
 </li>
+
+/home/rlc/Área de Trabalho/workspace/ProjetoTRP/grails-app/assets/images/contratoTeste.gif

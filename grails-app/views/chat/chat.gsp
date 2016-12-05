@@ -9,46 +9,46 @@
 	<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js">F</script>
 	<script defer type="text/javascript">
 
-	    function setTextHistori() {
-	    document.getElementById("historys").value =  document.getElementById("historys").value + "\n"+document.getElementById("chat").value;
-	    document.getElementById("chat").value ="";
+	    function ajustahistorico() {
 	    document.getElementById("historys").scrollTop = document.getElementById("historys").scrollHeight;
             }
 
             $(document).ready(function(){
+	    enviaMensagem(${menssagem.id});
             });
 
-            function enviaMensagem(){
+	    function carregarMenssagens(){
+	    location.reload();
+	    }
+
+            function enviaMensagem(id){
+	    var s = document.getElementById("chat").value;
+
 	    $.ajax({
 	    method: "POST",
-                            url: '${g.createLink( controller:'chat', action:'enviarMensagem')}',
-	    data: {},
+	    url: '${g.createLink( controller:'chat', action:'enviarMensagem')}',
+	    data: {"id":id, "menssagem":s},
 	    success: function (data){
-	    $("#retornoTeste").html(data);
+	    console.log(data)
+	    $("textarea#historys").text(data.corpoMenssagem);
+	    ajustahistorico();
 	    }
 	    });
-
+	    document.getElementById("chat").value ="";	
             }
 
 	</script>
     </head>
     <body>
-
-	<div class="form"  align="center" >
-	    History:<br/><textarea id="historys" name="History" form="usrform" readonly></textarea><br/>
-	</div>
-
-
-	<g:form controller="chat" action="escreve" method="post" >
+        <div id="todoConteudo">
+	    <div id="historia" class="form"  align="center" >
+		History:<br/><textarea id="historys" name="history" form="usrform" readonly></textarea><br/>
+	    </div>
+	    <input type="hidden" name="menssagem" value="${menssagem.id}"/>
 	    <textarea id="chat" name="sendChat" disable="true" enable="false"></textarea></br>
-	    <input class="buttons" align="center" type="submit" value="Enviar" id="sendButton" name="Enviar" "/>
-	</g:form>
-	<input type="submit" name="testess" value="CHAMACONTROLER" onclick="enviaMensagem()"/>
-
-	<div id="retornoTeste"></div>
-
-    </body>
-</html>
+	    <input align="center" class="buttons" align="center" type="submit" value="Enviar" id="sendButton" name="Enviar" onclick="enviaMensagem(${menssagem.id})"/>
+	</div>
+</html> 
 
 
 
