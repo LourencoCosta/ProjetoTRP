@@ -2,11 +2,9 @@ package projetotrp
 import Enuns.*
 
 class Pagamento {
-    StatusPagamento statusPagamento
+    String statusPagamento
     Float valor
 
-    static belongsTo = [contrato:Contrato]
-    
     static constraints = {
         statusPagamento nulable:false
 	servico nullable:true

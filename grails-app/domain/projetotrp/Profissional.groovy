@@ -7,7 +7,7 @@ class Profissional extends UsuarioSistema {
     Float precoMedioHora
 	
     //para Profissional
-    static hasMany = [cursos: CursosDoProfissional, medias:Media]
+    static hasMany = [cursos: CursosDoProfissional, midia:Midia]
     
     static constraints = {
     }

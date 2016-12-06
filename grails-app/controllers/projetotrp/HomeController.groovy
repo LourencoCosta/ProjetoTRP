@@ -1,5 +1,6 @@
 package projetotrp
 import grails.converters.JSON
+import Enuns.*
 
 class HomeController {
 
@@ -48,7 +49,7 @@ class HomeController {
 	render categorias 
     }
 	
-    def detalheprofissional(){
+    def detalheProfissional(){
 	if(session.usuarioSistema){
 	    Integer id = session.usuarioSistema.id
 	    def usuarioSistema = UsuarioSistema.get(id)
@@ -85,8 +86,42 @@ class HomeController {
 	    contrato.setTermos(params.termos)
 	    
 	    contrato.save (flush:true, failOnError: true)
-	    
-	    
 	}
+    }
+    
+    def carregarContrato(){
+	def messagem = Menssagem.get(params.id)
+	render ([template:gerarContrato, model:[menssagem:menssagem]])
+    }
+    
+    def contratarServico(){
+	def menssagem = Menssagem.get(params.idMenssagem)
+	
+	def profissional = usuarioSistema.get(menssagem.profissional.id)
+	
+	def contratante = usuarioSistema.get(menssagem.usuarioSistema.id)
+        
+	def contrato = new Contrato()
+	contrato.setDataEmissao(new Date())
+	contrato.setContratante(contratante)
+	contrato.setProfissional(profissional)
+	contrato.setTermos(menssagem.texto + "\nTermos adicionais .../n"+ "Assinatura TRP profissional " + profissional.getAssinaturaTrp() +"\n" + "Assinatura Contratante " + usuarioSistema.getAssinaturaTrp())
+	println contrato
+	
+	def servico = new Servico()
+	servico.setProfissionalOperante(contrato.profissional)
+	servico.setNotaQualidadeServico(0.0)
+	servico.setComentarios("Serviço ainda nao avaliado")
+	servico.setStatusServico("EM ANDAMENTO")
+	servico.setContrato(contrato)
+	println servico
+	
+	def pagamento = new Pagamento()
+	pagamento.setStatusPagamento("Pago")
+	pagamento.setValor(Float.parseFloat(params.idPagamento))
+	pagamento.setServico(servico)
+	println pagamento
+	
+	render contrato
     }
 }

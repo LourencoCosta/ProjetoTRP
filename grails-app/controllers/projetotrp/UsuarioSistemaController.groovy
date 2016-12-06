@@ -36,18 +36,22 @@ class UsuarioSistemaController {
         }
 
         usuarioSistema.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioSistema.label', default: 'UsuarioSistema'), usuarioSistema.id])
-                redirect usuarioSistema
-            }
-            '*' { respond usuarioSistema, [status: CREATED] }
-        }
+	request.withFormat {
+	    form multipartForm {
+		flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioSistema.label', default: 'UsuarioSistema'), usuarioSistema.id])
+		//	                redirect usuarioSistema
+		redirect(uri:'/logintrp')
+	    }
+	      '*' { respond usuarioSistema, [status: CREATED] }
+	}
     }
 
     def edit(UsuarioSistema usuarioSistema) {
         respond usuarioSistema
+    }
+    def editar(){
+	def usuarioSistema = UsuarioSistema.get(params.id)
+	this.edit(usuarioSistema)
     }
 
     @Transactional

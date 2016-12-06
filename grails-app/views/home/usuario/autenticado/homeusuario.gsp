@@ -78,7 +78,7 @@
 	function trazerDetalhesProfissional(id){
 	$.ajax({
 	method: "POST",
-        url: '${g.createLink( controller:'home', action:'detalheprofissional')}',
+        url: '${g.createLink( controller:'home', action:'detalheProfissional')}',
 	data: {"id":id},
 	success: function (data){
 	console.log(data);
@@ -115,10 +115,47 @@
 	}
 	});
 	}
+
+	function contratarServico(id){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'contratarServico')}',
+	data: {"id":id},
+	success: function (data){
+	console.log(data);
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+
+	function editarCadastro(id){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'usuarioSistema', action:'show')}',
+	data: {"id":id},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+	
+	function editarRegistro(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'usuarioSistema', action:'edit')}',
+	data: {"id":${session.usuarioSistema.id}},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
     </script>
 </head>
 <body>
+    <div align="center">
 
+	<g:loginControl />
+    </div>
 <content tag="nav">
     <li class="buttons">
 
@@ -129,9 +166,7 @@
     </li>
 
     <li class="buttons">
-        <g:form controller="autenticacao" action="index">
-            <g:actionSubmit value="Cadastro" action="index"/>
-        </g:form>
+	<input type="submit" name="botaoCadastro" value="Cadastro" onclick="editarCadastro(${session.usuarioSistema.id})"/>
     </li>
 
     <li class="buttons">
@@ -139,9 +174,6 @@
             <g:actionSubmit value="Logout" action="logout"/>
         </g:form>
     </li>
-
-
-
 </content>
 
 <div class="svg" role="presentation">
@@ -159,8 +191,6 @@
     <div id="content" role="main">
 	<section class="row colset-2-its">
 	    <div id="controllers" role="navigation">
-
-
 		<ul>
 		    <hr>
 		    <div id="todoConteudo" ><h1 align="center"><b>The Rigth Professional - O seu problema em boas mãos <br></b></h1></div>
@@ -176,11 +206,8 @@
 </body>
 </html>
 
-
 <li>
     <div id="loginHeader">
         <g:loginControl />
     </div>
 </li>
-
-/home/rlc/Área de Trabalho/workspace/ProjetoTRP/grails-app/assets/images/contratoTeste.gif

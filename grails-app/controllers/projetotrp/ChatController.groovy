@@ -56,7 +56,7 @@ class ChatController {
 	if(session.usuarioSistema){
 	    menssagemObject = Menssagem.get(Integer.parseInt(params.id))
 	    def corpoMenssagem = menssagemObject.getTexto()
-	    corpoMenssagem = corpoMenssagem +"\n" + new Date().hours +" "+ session.usuarioSistema.nome +" Disse: " + params.menssagem
+	    corpoMenssagem = corpoMenssagem +"\n" + new Date() +" "+ session.usuarioSistema.nome +" Disse: " + params.menssagem
 	    menssagemObject.setTexto(corpoMenssagem)
 	    menssagemObject.save(flush:true, failOnError: true)
 	    resposta["corpoMenssagem"] = corpoMenssagem

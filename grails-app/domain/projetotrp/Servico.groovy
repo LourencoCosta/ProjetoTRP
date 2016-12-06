@@ -5,8 +5,8 @@ class Servico {
         Profissional profissionalOperante
 	Integer notaQualidadeServico
 	String comentarios
-	StatusServico statusServico
-	
+	String statusServico
+	Pagamento pagamento
     static belongsTo = [contrato:Contrato]
 
     static mapping = {
@@ -17,6 +17,8 @@ class Servico {
         valorServico nulable:false
         statusServico nulable:false
 	pagamento nullable:true
+	notaQualidadeServico nullable:true
+	comentarios maxSize:32000
     }
 
 }

@@ -3,22 +3,17 @@ package projetotrp
 class Menssagem {
 
     String texto
-    boolean statusMensagemCliente
-    boolean statusMensagemProfissional
     UsuarioSistema contratante
     Profissional profissional
-
+    String statusMenssagem
     static constraints = {
+	texto maxSize:32000
     }
 
     static mapping = {
         id generator:'sequence-identity', params:[sequence:'mensagem_key_seq']
+	version: false
     }
-    
-//    String toString(){
-//	"Conversa entre: ${this.contratante.nome} e ${(UsuarioSistema)this.profissional.nome}"
-//    }
-
 }
 
 

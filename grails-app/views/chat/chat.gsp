@@ -36,20 +36,25 @@
 	    });
 	    document.getElementById("chat").value ="";	
             }
-
 	</script>
     </head>
     <body>
+	<div align="center"><g:loginControl /></div>
         <div id="todoConteudo">
 	    <div id="historia" class="form"  align="center" >
 		History:<br/><textarea id="historys" name="history" form="usrform" readonly></textarea><br/>
 	    </div>
 	    <input type="hidden" name="menssagem" value="${menssagem.id}"/>
 	    <textarea id="chat" name="sendChat" disable="true" enable="false"></textarea></br>
-	    <input align="center" class="buttons" align="center" type="submit" value="Enviar" id="sendButton" name="Enviar" onclick="enviaMensagem(${menssagem.id})"/>
+	    <li class="buttons">
+		<input type="submit" value="Enviar" id="sendButton" name="Enviar" onclick="enviaMensagem(${menssagem.id})"/>
+	    </li>
+	    <li class="buttons">
+		<input type="submit" value="Contratar Serviço" id="gerarContrato" name="contratarServico" onclick="caregarTemplateContrato(${menssagem.id})"/>
+	    </li>
 	</div>
-</html> 
 
+</html> 
 
 
 

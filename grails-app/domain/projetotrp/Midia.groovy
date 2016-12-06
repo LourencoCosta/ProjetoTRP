@@ -1,12 +1,12 @@
 package projetotrp
 
-class Media {
+class Midia {
    
     String url
     static belongsTo = [profissional:Profissional]
     
     static constraints = {
-	id generator:'sequence-identity', params:[sequence:'media_key_seq']
+	id generator:'sequence-identity', params:[sequence:'midia_key_seq']
 	profissional nullable:false
     }
     

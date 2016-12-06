@@ -2,14 +2,16 @@ package projetotrp
 import Enuns.*
 
 class Contrato {
-	String termos
-	Date dataEmissao
-	Profissional profissional
-	UsuarioSistema contratante
+    String termos
+    Date dataEmissao
+    Profissional profissional
+    UsuarioSistema contratante
+    static hasMany = [servico: Servico]
 	
     static constraints = {
         dataEmissao nullable:false
-	termos nullable:false
+	termos nullable:false, maxSize:32000
+	
     }
 
     static mappings = {
