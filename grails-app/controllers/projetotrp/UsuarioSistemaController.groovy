@@ -1,6 +1,5 @@
 package projetotrp
 
-import org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -38,7 +37,7 @@ class UsuarioSistemaController {
         usuarioSistema.save flush:true
 	request.withFormat {
 	    form multipartForm {
-		flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioSistema.label', default: 'UsuarioSistema'), usuarioSistema.id])
+		flash.message = "Usuario criado Com sucesso, Efetue o Login"
 		//	                redirect usuarioSistema
 		redirect(uri:'/logintrp')
 	    }
@@ -72,8 +71,8 @@ class UsuarioSistemaController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'usuarioSistema.label', default: 'UsuarioSistema'), usuarioSistema.id])
-                redirect usuarioSistema
+                flash.message = "Dados Alterados com Sucesso"
+                redirect(uri:'/')
             }
             '*'{ respond usuarioSistema, [status: OK] }
         }

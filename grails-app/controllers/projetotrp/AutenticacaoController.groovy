@@ -7,7 +7,6 @@ class AutenticacaoController {
         def usuarioSistema = UsuarioSistema.findByLoginAndSenha(params.login, params.senha)
         if (usuarioSistema) {
             session.usuarioSistema = usuarioSistema
-            flash.message = "Hello ${usuarioSistema.nome}!"
             redirect(controller:"homeController", action: "index")
         } else {
             flash.message = "Acesso negado"

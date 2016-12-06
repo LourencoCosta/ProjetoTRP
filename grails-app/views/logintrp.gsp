@@ -52,8 +52,8 @@
                 <input class="buttons" type="password" name="senha"/><br/>
 	    <input class="buttons" type="submit" value="Entrar"/>
             </g:form>
+        <a href="#"> Esqueci minha senha</a>
 
-         <g:actionSubmit class="buttons"   action="update" id="facebook" value="Facebook"/>
 
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>

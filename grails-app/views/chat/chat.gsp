@@ -42,7 +42,7 @@
 	<div align="center"><g:loginControl /></div>
         <div id="todoConteudo">
 	    <div id="historia" class="form"  align="center" >
-		History:<br/><textarea id="historys" name="history" form="usrform" readonly></textarea><br/>
+		<h1>Conversa</h1><br/><textarea id="historys" name="history" form="usrform" readonly></textarea><br/>
 	    </div>
 	    <input type="hidden" name="menssagem" value="${menssagem.id}"/>
 	    <textarea id="chat" name="sendChat" disable="true" enable="false"></textarea></br>

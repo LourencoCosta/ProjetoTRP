@@ -180,17 +180,20 @@
 
     <div align="center">
 	Busca Rápida
-        <g:form controller="chat" action="escreve" method="post" >
-
-            <g:textField class="buttons" name="profissionais" value="Profissionals" />
-            <g:textField class="buttons" type="combo" name="myField" value="Áreas" />
+        <form  name="pesquisa" onsubmit="return validateForm()" method="post">
+            <g:textField class="buttons" name="localidade"/>
+            <g:select class="buttons" name="categoria" from="${categoria}"/>
+            <g:textField class="buttons" name="melhorPontuacao"/>
             <input class="buttons" align="center" type="submit" value="Pesquisar" id="sendButton" name="Pesquisar"/>
-        </g:form>
+        </form>
     </div>
 
     <div id="content" role="main">
 	<section class="row colset-2-its">
 	    <div id="controllers" role="navigation">
+	      <g:if test="${flash.message}">
+                        <div class="message">${flash.message}</div>
+                    </g:if>
 		<ul>
 		    <hr>
 		    <div id="todoConteudo" ><h1 align="center"><b>The Rigth Professional - O seu problema em boas mãos <br></b></h1></div>
@@ -205,9 +208,3 @@
 
 </body>
 </html>
-
-<li>
-    <div id="loginHeader">
-        <g:loginControl />
-    </div>
-</li>
