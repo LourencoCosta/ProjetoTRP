@@ -7,7 +7,11 @@ import org.springframework.transaction.annotation.Transactional
 class ChatController {
 
     def index() {
-        render (view: '/chat/chat')
+	if(session.usuarioSistema){
+	    render (view: '/chat/chat')
+	}else{
+	    redirect (uri:"/logintrp")
+	}
     }
    
     @Transactional
@@ -19,7 +23,7 @@ class ChatController {
 	    boolean statusMensagemCliente
 	    boolean statusMensagemProfissional
     
-	    def sql = "select m from Menssagem m where m.profissional.id = " + Integer.parseInt(params.profissional) + " and m.contratante.id = " + idUsuario + " and m.statusMensagemCliente is true" + " and m.statusMensagemProfissional is true" 
+	    def sql = "select m from Menssagem m where m.profissional.id = " + Integer.parseInt(params.profissional) + " and m.contratante.id = " + idUsuario + "and m.statusMenssagem like" + "ABERTA"
 	    listagem = Menssagem.executeQuery(sql)
 	    println listagem
 	    if(listagem.isEmpty()){   
@@ -29,8 +33,7 @@ class ChatController {
 		menssagem.setProfissional (profissional)
 		menssagem.setContratante(contratante)
 		menssagem.setTexto("Conversas de Negociaação" + new Date());
-		menssagem.setStatusMensagemCliente(true)
-		menssagem.setStatusMensagemProfissional(true)
+		menssagem.setStatusMenssagem("ABERTA")
 		menssagem.save (flush:true, failOnError: true)
 		render (view: '/chat/chat', model:[menssagem:menssagem])
 	    } else{
@@ -38,12 +41,18 @@ class ChatController {
 		menssagem = listagem.get(0)
 		render (view: '/chat/chat', model:[menssagem:menssagem])
 	    }
+	}else{
+	    redirect (uri:"/logintrp")
 	}
     } 
     
     def retornarMensagem (){
-	def menssagem = Menssagem.get(Integer.parseInt(params.menssagemAtual))
-	render (view: '/chat/chat', model:[menssagem:menssagem])
+	if(session.usuarioSistema){
+	    def menssagem = Menssagem.get(Integer.parseInt(params.menssagemAtual))
+	    render (view: '/chat/chat', model:[menssagem:menssagem])
+	}else{
+	    redirect (uri:"/logintrp")
+	}
     }
 
 
@@ -61,7 +70,21 @@ class ChatController {
 	    menssagemObject.save(flush:true, failOnError: true)
 	    resposta["corpoMenssagem"] = corpoMenssagem
 	    render resposta as JSON
+	}else{
+	    redirect (uri:"/logintrp")
 	}
+    }
+    
+    def atualizarMenssagem(){
+	if(session.usuarioSistema){
+	    def resposta = [:]
+	    def menssagem = Menssagem.get(params.id)
+	    resposta["corpoMenssagem"] = menssagem.texto
+	    render resposta as JSON
+	}else{
+	    redirect (uri:"/logintrp")
+	}
+	
     }
 
 }

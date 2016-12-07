@@ -86,13 +86,12 @@ class UsuarioSistemaController {
             notFound()
             return
         }
-
+	
         usuarioSistema.delete flush:true
-
+	
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'usuarioSistema.label', default: 'UsuarioSistema'), usuarioSistema.id])
-                redirect action:"index", method:"GET"
+		redirect(uri:'/')
             }
             '*'{ render status: NO_CONTENT }
         }

@@ -5,7 +5,7 @@
         <title>TRP</title>
     <asset:link rel="icon" href="logo_trp_final_barra.gif" type="image/x-ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+        <g:set var="entityName" value="${message(code: 'categoria.label', default: 'Categoria')}" />
     <script defer type="text/javascript">
 
 	$(document).ready(function () {
@@ -128,7 +128,7 @@
 	});
 	}
 
-	function editarCadastro(id){
+	function visualizarCadastro(id){
 	$.ajax({
 	method: "POST",
         url: '${g.createLink( controller:'usuarioSistema', action:'show')}',
@@ -138,8 +138,8 @@
 	}
 	});
 	}
-	
-	function editarRegistro(){
+
+	function editarUsuarioSistema(){
 	$.ajax({
 	method: "POST",
         url: '${g.createLink( controller:'usuarioSistema', action:'edit')}',
@@ -149,6 +149,63 @@
 	}
 	});
 	}
+
+	function exluirRegistro(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'usuarioSistema', action:'delete')}',
+	data: {"id":${session.usuarioSistema.id}},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+
+	function criarPerfilProfissional(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'criarPerfilProfissional')}',
+	data: {"id":${session.usuarioSistema.id}},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+
+	function carregarPerfilProfissional(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'profissional', action:'create')}',
+	data: {"id":${session.usuarioSistema.id}},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+
+	function ediarPerfilProfissional(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'editarPerfilProfissional')}',
+	data: {"id":${session.usuarioSistema.id}},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+
+	function excluirPerfilProfissional(){
+	$.ajax({
+	method: "POST",
+        url: '${g.createLink( controller:'home', action:'editarPerfilProfissional')}',
+	data: {"id":${session.usuarioSistema.id}},
+	success: function (data){
+	$("#todoConteudo").html(data);
+	}
+	});
+	}
+
+
     </script>
 </head>
 <body>
@@ -166,7 +223,7 @@
     </li>
 
     <li class="buttons">
-	<input type="submit" name="botaoCadastro" value="Cadastro" onclick="editarCadastro(${session.usuarioSistema.id})"/>
+	<input type="submit" name="botaoCadastro" value="Cadastro" onclick="visualizarCadastro(${session.usuarioSistema.id})"/>
     </li>
 
     <li class="buttons">
@@ -178,22 +235,23 @@
 
 <div class="svg" role="presentation">
 
-    <div align="center">
+    <div align="center" >
 	Busca Rápida
-        <form  name="pesquisa" onsubmit="return validateForm()" method="post">
             <g:textField class="buttons" name="localidade"/>
-            <g:select class="buttons" name="categoria" from="${categoria}"/>
+	     <fieldset class="form">
+                    <f:field bean="categoria" />
+                </fieldset>
+		
             <g:textField class="buttons" name="melhorPontuacao"/>
             <input class="buttons" align="center" type="submit" value="Pesquisar" id="sendButton" name="Pesquisar"/>
-        </form>
     </div>
 
     <div id="content" role="main">
 	<section class="row colset-2-its">
 	    <div id="controllers" role="navigation">
-	      <g:if test="${flash.message}">
-                        <div class="message">${flash.message}</div>
-                    </g:if>
+		<g:if test="${flash.message}">
+		    <div class="message">${flash.message}</div>
+		</g:if>
 		<ul>
 		    <hr>
 		    <div id="todoConteudo" ><h1 align="center"><b>The Rigth Professional - O seu problema em boas mãos <br></b></h1></div>

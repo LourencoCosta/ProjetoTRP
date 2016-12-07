@@ -12,7 +12,6 @@ class Profissional extends UsuarioSistema {
     static constraints = {
     }
     static mapping = {
-	   discriminator value:"profissional"
 	   descricao nullable:true
 	   mediaDasAvaliacoes nullable:true
     }

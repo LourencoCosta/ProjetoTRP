@@ -39,8 +39,8 @@ class ProfissionalController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'profissional.label', default: 'Profissional'), profissional.id])
-                redirect profissional
+                flash.message = "Perfil de Profissional Criado com Sucesso"
+                redirect (uri:"/")
             }
             '*' { respond profissional, [status: CREATED] }
         }
@@ -104,4 +104,6 @@ class ProfissionalController {
             '*'{ render status: NOT_FOUND }
         }
     }
+    
+    
 }
